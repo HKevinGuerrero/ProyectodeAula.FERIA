@@ -20,10 +20,7 @@ public class EmpleadoServices {
     EmpleadoRepository empleadoRepository;
     
     public List<Empleadto> getAllEmpleado() {
-        return empleadoRepository.findAll().stream()
-                .map(Empleado->{
-                return new Empleadto(Empleado.getIdempleado(), Empleado.getEmple_nombre(), Empleado.getEmple_apellido(), Empleado.getEmple_telefono(), Empleado.getEmple_email(), Empleado.getEmple_puesto());
-                }).toList();
+        return null;
     }
 }
 

@@ -4,15 +4,11 @@
  */
 package com.barberturn.modelo;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Entity
 @AllArgsConstructor
@@ -20,22 +16,15 @@ import lombok.NoArgsConstructor;
 @Data
 public class Cliente {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long id;
 
-    @Column(name = "nombre", nullable = false, columnDefinition = "String")
     private String nombre;
 
-    @Column(name = "apellido", nullable = false, columnDefinition = "String")
     private String apellido;
 
-    @Column(name = "telefono", columnDefinition = "long")
-    private long telefono;
+    private Long telefono;
 
-    @Column(name = "email", columnDefinition = "String")
     private String email;
 
-    
 }
-

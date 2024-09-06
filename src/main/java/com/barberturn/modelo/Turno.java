@@ -8,36 +8,30 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Turno {
-     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "empleado_id", referencedColumnName = "id")
-    private Empleado turnoempleado;
+    private Empleado empleado;
 
     @ManyToOne
-    @JoinColumn(name = "local_id", referencedColumnName = "id")
     private Local turnolocal;
 
-    @Column(name = "fecha", nullable = false)
     private LocalDateTime turnofecha;
 
-    @Column(name = "estado")
     private String turnoestado;
 
-    
 }

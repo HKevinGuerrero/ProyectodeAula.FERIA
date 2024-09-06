@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,17 +19,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name = "Servicio")
 public class Servicio {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idservicio;
-    
-    @Column(name = "nombreservicio", nullable = false, columnDefinition = "String")
+
     private String nombreservicio;
-    
-    @Column(name = "decripcionservicio", nullable = false, columnDefinition = "String")
+
     private String decripcionservicio;
-    
-    @Column(name = "precioservicio", nullable = false, columnDefinition = "long")
+
     private long precioservicio;
 }

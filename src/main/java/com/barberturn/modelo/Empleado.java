@@ -9,37 +9,29 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Table(name = "Empleado")
 public class Empleado {
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idempleado; 
 
-@Column(name = "Emple_nombre", nullable = false, columnDefinition = "String")
-    private String Emple_nombre;
+    @Id
+    private int idempleado;
 
-@Column(name = "Emple_apellido", nullable = false, columnDefinition = "String")
-    private String Emple_apellido;
+    private String nombre;
 
-@Column(name = "Emple_telefono", columnDefinition = "long")
-    private Long Emple_telefono;
-    
-@Column(name = "Emple_email", columnDefinition = "String")
+    private String apellido;
 
-    private String Emple_email;
+    private Long telefono;
 
-@Column(name = "Emple_puesto", columnDefinition = "String")
-    private String Emple_puesto;
+    private String email;
 
+    private String puesto;
 
-        
-    
 }
