@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.barberturn</groupId>
-	<artifactId>Baber.turn</artifactId>
+	<artifactId>Barberturn</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Barber.turn</name>
+	<name>Barberturn</name>
 	<description>PA</description>
 	<url/>
 	<licenses>
