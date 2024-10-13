@@ -13,20 +13,20 @@ import lombok.NoArgsConstructor;
 public class UserClienteDTO {
 
     /**
-     * @return the role
+     * @return the rol
      */
-    public String getRole() {
-        return role;
+    public String getRol() {
+        return rol;
     }
 
     /**
-     * @param role the role to set
+     * @param rol the rol to set
      */
-    public void setRole(String role) {
-        this.role = role;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-
+    
     /**
      * @return the user
      */
@@ -75,6 +75,6 @@ public class UserClienteDTO {
 
     private String token;
     
-    private String role;
+    private String rol;
     
 }

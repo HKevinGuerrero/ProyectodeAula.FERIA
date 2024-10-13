@@ -38,6 +38,6 @@ public class UserBarbero {
     
     private String token;
     
-    private String role;
+    private String rol;
     
 }

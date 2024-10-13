@@ -18,22 +18,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UserBarberoDTO {
+
+    /**
+     * @return the rol
+     */
+    public String getRol() {
+        return rol;
+    }
+
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
     
-    /**
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
-
-    /**
-     * @param role the role to set
-     */
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-
+   
     /**
      * @return the user
      */
@@ -82,6 +82,6 @@ public class UserBarberoDTO {
 
     private String token;
     
-    private String role;
+    private String rol;
     
 }

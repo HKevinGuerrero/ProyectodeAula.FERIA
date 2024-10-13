@@ -36,7 +36,7 @@ public class UserCliente {
     
     private String token;
     
-    private String role;
+    private String rol;
     
     
 }
