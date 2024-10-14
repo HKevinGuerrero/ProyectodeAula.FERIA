@@ -77,29 +77,10 @@ Sigue estos pasos para ejecutar el proyecto localmente:
 2. **Barbero**: Puede registrarse conociendo ID del local el cual lo contrato, iniciar sesión, ver turnos asignados, confirmar y cancelar turno.
 3. **Admin**: (En planeacion).
 
-## Estructura del Proyecto
-
-\`\`\`
-src/
-│
-├── main/
-│   ├── java/
-│   │   ├── com.example.barberturn/  # Paquete principal del proyecto
-│   │   │   ├── controllers/         # Controladores REST
-│   │   │   ├── services/            # Lógica de servicios
-│   │   │   ├── models/              # Entidades y DTOs
-│   │   │   ├── security/            # Configuración de seguridad y JWT
-│   │   └── resources/
-│   │       ├── application.properties  # Configuración del proyecto
-│   └── test/                            # Pruebas unitarias
-│
-└── README.md  # Archivo de documentación
-\`\`\`
-
 ## Contribuciones
 
 1. Kevin Jose Guerrero Hincapie.
-2. Daniel Barrios. 
+2. Daniel Eduardo Barrios. 
 3. Ricardo Arango.
 4. Derek Mendoza Chica.
 5. 
