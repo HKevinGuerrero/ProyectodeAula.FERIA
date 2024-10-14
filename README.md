@@ -1,5 +1,5 @@
-# Barberturn
-**Barberturn** es una aplicación de gestión de turnos para barberías que permite a los usuarios (clientes) reservar citas a diferentes locales con multiples barberos vinculados a la aplicacion. Este sistema implementa autenticación con JWT (Aún en proceso) y maneja diferentes roles de usuario (cliente, barbero y admin).
+# BarberTurn
+**BarberTurn** es una aplicación de gestión de turnos para barberías que permite a los usuarios (clientes) reservar citas a diferentes locales con multiples barberos vinculados a la aplicacion. Este sistema implementa autenticación con JWT (Aún en proceso) y maneja diferentes roles de usuario (cliente, barbero y admin).
 
 ## Tabla de Contenidos
 
@@ -14,7 +14,7 @@
 
 ## Descripción
 
-Barberturn facilita la gestión de turnos para barberías, proporcionando una interfaz fácil de usar tanto para los barberos como para los clientes. Los Barberos y clientes pueden crear su usuario, los barberos se vinculan a su local contratado para trabajar, mientras que los clientes pueden reservar sus citas en función de la disponibilidad del barbero y las barberias.
+BarberTurn facilita la gestión de turnos para barberías, proporcionando una interfaz fácil de usar tanto para los barberos como para los clientes. Los Barberos y clientes pueden crear su usuario, los barberos se vinculan a su local contratado para trabajar, mientras que los clientes pueden reservar sus citas en función de la disponibilidad del barbero y las barberias.
 
 ## Características
 
@@ -27,7 +27,7 @@ Barberturn facilita la gestión de turnos para barberías, proporcionando una in
 ## Tecnologías
 
 - **Backend**: Java, Spring Boot, Spring Security (JWT (Aún en proceso)).
-- **Frontend**: React.
+- **Frontend**: React, JavaScript, CSS.
 - **Base de datos**: PostgreSQL.
 - **Control de versiones**: Git, GitHub.
 
