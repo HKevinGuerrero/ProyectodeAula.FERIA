@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 
 import java.time.LocalDateTime;
 
@@ -30,7 +31,7 @@ public class Turno {
     
     private String local;
 
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
     private String estado;
     

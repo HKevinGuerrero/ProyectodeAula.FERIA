@@ -1,6 +1,7 @@
 
 package com.Aplication.modelodto;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Turnodto {
+
+    /**
+     * @return the fecha
+     */
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    /**
+     * @param fecha the fecha to set
+     */
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 
     /**
      * @return the id
@@ -53,19 +68,6 @@ public class Turnodto {
         this.local = local;
     }
 
-    /**
-     * @return the fecha
-     */
-    public LocalDateTime getFecha() {
-        return fecha;
-    }
-
-    /**
-     * @param fecha the fecha to set
-     */
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
 
     /**
      * @return the estado
@@ -171,7 +173,7 @@ public class Turnodto {
     
     private String local;
 
-    private LocalDateTime fecha;
+    private LocalDate fecha;
 
     private String estado;
     
