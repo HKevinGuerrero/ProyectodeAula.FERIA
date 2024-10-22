@@ -10,34 +10,33 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- *
- * @author KEVIN-PC
- */
+import java.util.List;
 
 @Entity
-@Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "User_Barbero")
-public class UserBarbero {
+@NoArgsConstructor
+@Data
+@Table(name = "Turnero")
+
+public class Turnero {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique=true)
-    private String username;
+    private String barberia;
 
-    private String password;
+    private String numeroturno;
     
-    private String token;
-    
-    private String rol;
-    
+    private String hora;
+
+    private LocalDate fecha;
+
+
 }
