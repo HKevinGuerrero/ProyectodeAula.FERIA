@@ -13,45 +13,36 @@ import com.Aplication.repository.TurneroRepository;
 public class TurneroService {
 
     @Autowired
-    private static TurneroRepository turnoservicioRepository;
-
-    public static List<TurneroService> getAllTurnoservicioService() {
-        return List.of();
-    }
-
-    // Crear o actualizar un turno de servicio
-    public Turnero saveOrUpdate(Turnero turnoservicio) {
-        return null;
-    }
+    private TurneroRepository turnerorepository; 
 
     // Obtener todos los turnos de servicio
     public List<Turnero> getAllTurnoservicios() {
-        return turnoservicioRepository.findAll();
+        return turnerorepository.findAll();
+    }
+
+    // Crear o actualizar un turno de servicio
+    public Turnero saveOrUpdate(Turnero turnero) {
+        return turnerorepository.save(turnero);
     }
 
     // Obtener turno de servicio por ID
-    public static Optional<Turnero> findById(Long id) {
-        return turnoservicioRepository.findById(id);
+    public Optional<Turnero> findById(Long id) {  // No debe ser static
+        return turnerorepository.findById(id);
     }
 
     // Eliminar un turno de servicio
     public void deleteTurnoservicio(Turnero turnoservicio) {
-        turnoservicioRepository.delete(turnoservicio);
+        turnerorepository.delete(turnoservicio);
     }
 
     // Actualizar un turno de servicio por ID
     public Turnero updateTurnoservicio(Long id, Turnero updateTurnoservicio) {
-        return turnoservicioRepository.findById(id).map(turnoservicio -> {
+        return turnerorepository.findById(id).map(turnoservicio -> {
             turnoservicio.setNumeroturno(updateTurnoservicio.getNumeroturno());
             turnoservicio.setBarberia(updateTurnoservicio.getBarberia());
             turnoservicio.setHora(updateTurnoservicio.getHora());
             turnoservicio.setFecha(updateTurnoservicio.getFecha());
-            return turnoservicioRepository.save(turnoservicio);  // Guardar turno actualizado
+            return turnerorepository.save(turnoservicio);  // Guardar turno actualizado
         }).orElseThrow(() -> new RuntimeException("Turno de servicio no encontrado"));
     }
-
-
 }
-
-
-
