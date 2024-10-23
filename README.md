@@ -1,84 +1,70 @@
-# BarberTurn
-**BarberTurn** es una aplicación de gestión de turnos para barberías que permite a los usuarios (clientes) reservar citas a diferentes locales con multiples barberos vinculados a la aplicacion. Este sistema implementa autenticación con JWT (Aún en proceso) y maneja diferentes roles de usuario (cliente, barbero y admin).
+# Getting Started with Create React App
 
-## Tabla de Contenidos
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-- [Descripción](#descripción)
-- [Características](#características)
-- [Tecnologías](#tecnologías)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Contribuciones](#contribuciones)
+## Available Scripts
 
-## Descripción
+In the project directory, you can run:
 
-BarberTurn facilita la gestión de turnos para barberías, proporcionando una interfaz fácil de usar tanto para los barberos como para los clientes. Los Barberos y clientes pueden crear su usuario, los barberos se vinculan a su local contratado para trabajar, mientras que los clientes pueden reservar sus citas en función de la disponibilidad del barbero y las barberias.
+### `npm start`
 
-## Características
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-- **Autenticación JWT**: Proporciona seguridad y manejo de roles de usuario (cliente, barbero, admin). (Aún en proceso)
-- **Gestión de barberos y clientes**: Los clientes y barberos pueden crear su propio perfil e ingresar a su dashboard correspondiente.
-- **Reserva de turnos**: Los clientes pueden reservar turnos en función de la disponibilidad de barberos y locales.
-- **Notificaciones por email**: Los usuarios reciben notificaciones por correo electrónico confirmando sus turnos y recordando hora del turno.
-- **CRUD completo**: Soporte para operaciones de creación, lectura, actualización y eliminación para todas las entidades del sistema (clientes, barberos, turnos, etc.).
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## Tecnologías
+### `npm test`
 
-- **Backend**: Java, Spring Boot, Spring Security (JWT (Aún en proceso)).
-- **Frontend**: React, JavaScript, CSS.
-- **Base de datos**: PostgreSQL.
-- **Control de versiones**: Git, GitHub.
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## Instalación
+### `npm run build`
 
-Sigue estos pasos para ejecutar el proyecto localmente:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-1. Clona el repositorio:
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-   \`\`\`bash
-   git clone https://github.com/HKevinGuerrero/ProyectodeAula.FERIA.git
-   \`\`\`
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-2. Navega al directorio del proyecto:
+### `npm run eject`
 
-   \`\`\`bash
-   cd ProyectodeAula.FERIA
-   \`\`\`
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-3. Instala las dependencias y configura el entorno de desarrollo. Asegúrate de tener [Java](https://www.java.com/) y [Maven](https://maven.apache.org/) instalados:
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-   \`\`\`bash
-   mvn clean install
-   \`\`\`
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-4. Configura la base de datos PostgreSQL y actualiza el archivo \`application.properties\` con tus credenciales.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-5. Ejecuta el proyecto:
+## Learn More
 
-   \`\`\`bash
-   mvn spring-boot:run
-   \`\`\`
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-## Uso
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Endpoints principales
+### Code Splitting
 
-- **POST /auth/register**: Registrar nuevos usuarios (clientes).
-- **POST /auth/login**: Autenticarse y obtener un JWT (Aún en proceso).
-- **GET /turnos**: Ver turnos disponibles (clientes autenticados).
-- **POST /turnos**: Reservar un turno (clientes).
-- **Admin**: (En planeacion).
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Roles de usuario
+### Analyzing the Bundle Size
 
-1. **Cliente**: Puede registrarse, iniciar sesión y reservar turnos.
-2. **Barbero**: Puede registrarse conociendo ID del local el cual lo contrato, iniciar sesión, ver turnos asignados, confirmar y cancelar turno.
-3. **Admin**: (En planeacion).
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-## Contribuciones
+### Making a Progressive Web App
 
-1. Kevin Jose Guerrero Hincapie.
-2. Daniel Eduardo Barrios. 
-3. Ricardo Arango.
-4. Derek Mendoza Chica.
-5. 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
