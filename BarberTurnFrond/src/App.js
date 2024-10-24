@@ -10,6 +10,7 @@ import BarberiasDisponibles from './components/pages/BarberiasDisponibles.tsx';
 import Barberosbarbafina from './components/pages/BarberosDisponibles-Barbafina.tsx';
 import Barberostucorte from './components/pages/BarberosDisponibles-Tucorte.tsx';
 import Barberosbarbershop from './components/pages/BarberosDisponibles-Barbershop.tsx';
+import BarberosUrbanBarber from './components/pages/BarberosDisponibles-UrbanBarber.tsx';
 import ReservaTurno from './components/pages/ReservaTurno.tsx';
 import RegistroCredenciales from './components/pages/Registro-Credenciales.tsx';
 import DashboardBarbero from './components/pages/dashboard-barbero.tsx';
@@ -20,7 +21,9 @@ import Circular from './components/pages/circular.tsx';
 import Triangular from './components/pages/triangular.tsx';
 import MisTurnos from './components/pages/MisTurnos.tsx';
 import Turnero from './components/pages/turnero.tsx';
-
+import TicketTurn from './components/pages/Ticket-turnos.tsx'
+import AdminBarber from './components/pages/Admin-Barber.tsx'
+import LoginRegister from './components/pages/Login-Register_Barber.tsx'
 import './App.css';
 
 function App() {
@@ -38,6 +41,7 @@ function App() {
           <Route path="/Barberos-Disponibles/barbafina" element={<Barberosbarbafina />} />
           <Route path="/Barberos-Disponibles/tucorte" element={<Barberostucorte />} />
           <Route path="/Barberos-Disponibles/barbershop" element={<Barberosbarbershop />} />
+          <Route path="/Barberos-Disponibles/urbanbarber" element={<BarberosUrbanBarber />} />
           <Route path="/Reserva-Turno/" element={<ReservaTurno />} />
           <Route path="/Registro-Credenciales" element={<RegistroCredenciales />} />
           <Route path="/Dashboard-Barbero" element={<DashboardBarbero />} />
@@ -48,6 +52,9 @@ function App() {
           <Route path="/Cortes/Triangular" element={<Triangular />} />
           <Route path="/Mis-Turnos" element={<MisTurnos />} />
           <Route path="/Turnos" element={<Turnero />} />
+          <Route path='/Ticket-Turnos' element={<TicketTurn />} />
+          <Route path='/Dashboard-Barberia' element={<AdminBarber />} />
+          <Route path='/Iniciar-sesion-Barberia' element={<LoginRegister />} />
         </Routes>
       </div>
     </Router>

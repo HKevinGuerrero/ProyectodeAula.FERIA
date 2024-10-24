@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import ReservaTurno from './ReservaTurno';
+
 
 interface CortePelo {
   id: number;
@@ -48,7 +48,7 @@ const GaleriaCortesPelo: React.FC = () => {
   return (
     <div style={estilos.contenedor}>
       <header style={estilos.encabezado}>
-        <Link to="/" style={estilos.botonVolver}>Volver</Link>
+        <Link to="/Galeria-Seleccionable" style={estilos.botonVolver}>Volver</Link>
         <h1 style={estilos.titulo}>BARBERTURN</h1>
       </header>
 
@@ -120,6 +120,7 @@ const estilos: { [key: string]: React.CSSProperties } = {
   subtitulo: {
     textAlign: 'center',
     color: '#fff',
+    fontSize: '1.8rem',
     margin: '2rem 0',
   },
   galeria: {

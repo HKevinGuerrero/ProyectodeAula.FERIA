@@ -11,7 +11,7 @@ interface TipoCara {
 const tiposCara: TipoCara[] = [
   { id: 'cuadrado', nombre: 'Cuadrada', imagen: "/assets/imgs/cuadrado.jpg", ruta: '/cara-tipos/cuadrado-seleccionable' },
   { id: 'ovalado', nombre: 'Ovalada', imagen: '/assets/imgs/ovalado.jpg', ruta: '/cara-tipos/ovalado-seleccionable' },
-  { id: 'redondo', nombre: 'Redonda', imagen: '/assets/imgs/redondo.jpg', ruta: '/cara-tipos/redondo-seleccionable' },
+  { id: 'redondo', nombre: 'Circular', imagen: '/assets/imgs/redondo.jpg', ruta: '/cara-tipos/redondo-seleccionable' },
   { id: 'triangular', nombre: 'Triangular', imagen: '/assets/imgs/triangular.jpg', ruta: '/cara-tipos/triangular-seleccionable' },
 ];
 
@@ -61,10 +61,13 @@ const styles: { [key: string]: React.CSSProperties } = {
   container: {
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#f0f0f0',
+    backgroundImage: 'url("/assets/imgs/background-gallery.jpg")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
     minHeight: '100vh',
   },
   header: {
-    backgroundColor: '#333',
+    backgroundColor: '#000',
     color: 'white',
     padding: '1rem',
     display: 'flex',
@@ -83,6 +86,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     fontSize: '1.5rem',
   },
   title: {
+    color: 'white',
     textAlign: 'center',
     margin: '2rem 0',
   },
@@ -139,11 +143,11 @@ const styles: { [key: string]: React.CSSProperties } = {
   cardTitle: {
     margin: '0',
     fontSize: '24px',
-    color: 'black',
+    color: 'white',
   },
   cardDescription: {
     margin: '10px 0',
-    color: 'black',
+    color: 'white',
   },
   selectButton: {
     backgroundColor: 'black',
