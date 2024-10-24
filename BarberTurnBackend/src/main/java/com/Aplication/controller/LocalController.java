@@ -39,7 +39,7 @@ public class LocalController {
 
     // Obtener Local por ID
     @GetMapping("/id")
-    public ResponseEntity<Local> getEmpleadoById(@PathVariable int id) {
+    public ResponseEntity<Local> getEmpleadoById(@PathVariable Long id) {
         return LocalService.findById(id)
                 .map(Local -> new ResponseEntity<>(Local, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
@@ -47,7 +47,7 @@ public class LocalController {
 
     // Eliminar empleado por ID
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> Deletelocal(@PathVariable int id) {
+    public ResponseEntity<Void> Deletelocal(@PathVariable Long id) {
         return LocalService.findById(id)
                 .map(Local -> {
                     LocalService.deleteLocal(Local);
@@ -58,7 +58,7 @@ public class LocalController {
 
     // Actualizar un Local
     @PutMapping("/{id}")
-    public ResponseEntity<Local> updateLocal(@PathVariable int id, @RequestBody Local local) {
+    public ResponseEntity<Local> updateLocal(@PathVariable Long id, @RequestBody Local local) {
         return LocalService.findById(id)
                 .map(existingLocal -> {
                     local.setIdlocal(existingLocal.getIdlocal());

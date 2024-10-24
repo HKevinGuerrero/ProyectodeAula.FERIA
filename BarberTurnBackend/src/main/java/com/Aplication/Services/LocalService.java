@@ -13,7 +13,7 @@ import java.util.Optional;
 public class LocalService {
 
     @Autowired
-    private LocalRepository localRepository; // Remove 'static' keyword
+    private LocalRepository localRepository; 
 
     // Crear o actualizar un Local
     public Local create(Local local) {
@@ -26,9 +26,10 @@ public class LocalService {
     }
 
     // Obtener Local por ID
-    public Optional<Local> findById(int id) {
-        return localRepository.findById((long) id);
+    public Optional<Local> findById(Long id) {
+        return localRepository.findById(id);
     }
+
 
     // Eliminar un Local por su ID
     public void deleteLocal(Local local) {
@@ -38,9 +39,9 @@ public class LocalService {
     public Local updateLocal(Long id, Local updateLocal) {
         return localRepository.findById(id).map(local -> {
             local.setIdlocal(updateLocal.getIdlocal());
-            local.setNombre(updateLocal.getNombre());
-            local.setTelefono(updateLocal.getTelefono());
-            local.setDirrecion(updateLocal.getDirrecion());
+            local.setLocalRegistro(updateLocal.getLocalRegistro());
+            local.setTelefonoRegistro(updateLocal.getTelefonoRegistro());
+            local.setDireccionRegistro(updateLocal.getDireccionRegistro());
             return localRepository.save(local); // Guardar local actualizado
         }).orElseThrow(() -> new RuntimeException("Local no encontrado"));
     }

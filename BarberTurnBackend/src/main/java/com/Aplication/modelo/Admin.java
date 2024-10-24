@@ -46,4 +46,6 @@ public class Admin {
     
     private String direccionRegistro;
     
+    private String contrasenaResgistro;
+    
 }

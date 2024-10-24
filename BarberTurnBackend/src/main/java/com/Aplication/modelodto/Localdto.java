@@ -9,13 +9,69 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 
 public class Localdto {
-    @Id
-    private int idlocal;
 
-    private String nombre;
-    private String dirrecion;
+    /**
+     * @return the idlocal
+     */
+    public Long getIdlocal() {
+        return idlocal;
+    }
 
-    private long telefono;
+    /**
+     * @param idlocal the idlocal to set
+     */
+    public void setIdlocal(Long idlocal) {
+        this.idlocal = idlocal;
+    }
+
+    /**
+     * @return the localRegistro
+     */
+    public String getLocalRegistro() {
+        return localRegistro;
+    }
+
+    /**
+     * @param localRegistro the localRegistro to set
+     */
+    public void setLocalRegistro(String localRegistro) {
+        this.localRegistro = localRegistro;
+    }
+
+    /**
+     * @return the direccionRegistro
+     */
+    public String getDireccionRegistro() {
+        return direccionRegistro;
+    }
+
+    /**
+     * @param direccionRegistro the direccionRegistro to set
+     */
+    public void setDireccionRegistro(String direccionRegistro) {
+        this.direccionRegistro = direccionRegistro;
+    }
+
+    /**
+     * @return the telefonoRegistro
+     */
+    public long getTelefonoRegistro() {
+        return telefonoRegistro;
+    }
+
+    /**
+     * @param telefonoRegistro the telefonoRegistro to set
+     */
+    public void setTelefonoRegistro(long telefonoRegistro) {
+        this.telefonoRegistro = telefonoRegistro;
+    }
+    
+    private Long idlocal;
+
+    private String localRegistro;
+    private String direccionRegistro;
+
+    private Long telefonoRegistro;
 
 
 }

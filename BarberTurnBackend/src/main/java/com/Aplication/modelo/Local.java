@@ -19,12 +19,13 @@ public class Local {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idlocal;
+    private Long idlocal;
+    
+    private String localRegistro;
 
-    private String nombre;
-    private String dirrecion;
+    private String direccionRegistro;
 
-    private long telefono;
+    private Long telefonoRegistro;
 
 
 }

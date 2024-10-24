@@ -11,6 +11,20 @@ package com.Aplication.modelodto;
 public class AdminDTO {
 
     /**
+     * @return the contrasenaResgistro
+     */
+    public String getContrasenaResgistro() {
+        return contrasenaResgistro;
+    }
+
+    /**
+     * @param contrasenaResgistro the contrasenaResgistro to set
+     */
+    public void setContrasenaResgistro(String contrasenaResgistro) {
+        this.contrasenaResgistro = contrasenaResgistro;
+    }
+
+    /**
      * @return the id
      */
     public Long getId() {
@@ -130,5 +144,6 @@ public class AdminDTO {
     private String rol;
     private String local;
     private String direccionRegistro;
+    private String contrasenaResgistro;
     
 }

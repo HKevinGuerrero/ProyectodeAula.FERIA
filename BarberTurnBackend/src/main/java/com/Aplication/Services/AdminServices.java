@@ -51,6 +51,7 @@ public class AdminServices {
             admin.setCorreo(updatedAdmin.getCorreo());
             admin.setRol(updatedAdmin.getRol());
             admin.setLocal(updatedAdmin.getLocal());
+            admin.setContrasenaResgistro(updatedAdmin.getContrasenaResgistro());
             return adminRepository.save(admin); // Guardar administrador actualizado
         }).orElseThrow(() -> new RuntimeException("Administrador no encontrado"));
     }
