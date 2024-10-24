@@ -11,20 +11,6 @@ package com.Aplication.modelodto;
 public class AdminDTO {
 
     /**
-     * @return the contrasenaResgistro
-     */
-    public String getContrasenaResgistro() {
-        return contrasenaResgistro;
-    }
-
-    /**
-     * @param contrasenaResgistro the contrasenaResgistro to set
-     */
-    public void setContrasenaResgistro(String contrasenaResgistro) {
-        this.contrasenaResgistro = contrasenaResgistro;
-    }
-
-    /**
      * @return the id
      */
     public Long getId() {
@@ -39,31 +25,31 @@ public class AdminDTO {
     }
 
     /**
-     * @return the nombreResgistro
+     * @return the nombreRegistro
      */
-    public String getNombreResgistro() {
-        return nombreResgistro;
+    public String getNombreRegistro() {
+        return nombreRegistro;
     }
 
     /**
-     * @param nombreResgistro the nombreResgistro to set
+     * @param nombreRegistro the nombreRegistro to set
      */
-    public void setNombreResgistro(String nombreResgistro) {
-        this.nombreResgistro = nombreResgistro;
+    public void setNombreRegistro(String nombreRegistro) {
+        this.nombreRegistro = nombreRegistro;
     }
 
     /**
-     * @return the apellidoResgistro
+     * @return the apellidoRegistro
      */
-    public String getApellidoResgistro() {
-        return apellidoResgistro;
+    public String getApellidoRegistro() {
+        return apellidoRegistro;
     }
 
     /**
-     * @param apellidoResgistro the apellidoResgistro to set
+     * @param apellidoRegistro the apellidoRegistro to set
      */
-    public void setApellidoResgistro(String apellidoResgistro) {
-        this.apellidoResgistro = apellidoResgistro;
+    public void setApellidoRegistro(String apellidoRegistro) {
+        this.apellidoRegistro = apellidoRegistro;
     }
 
     /**
@@ -135,15 +121,31 @@ public class AdminDTO {
     public void setDireccionRegistro(String direccionRegistro) {
         this.direccionRegistro = direccionRegistro;
     }
+
+    /**
+     * @return the contrasenaRegistro
+     */
+    public String getContrasenaRegistro() {
+        return contrasenaRegistro;
+    }
+
+    /**
+     * @param contrasenaRegistro the contrasenaRegistro to set
+     */
+    public void setContrasenaRegistro(String contrasenaRegistro) {
+        this.contrasenaRegistro = contrasenaRegistro;
+    }
+
+    
  
     private Long id;
-    private String nombreResgistro;
-    private String apellidoResgistro;
+    private String nombreRegistro;
+    private String apellidoRegistro;
     private Long telefonoRegistro;
     private String correo;
     private String rol;
     private String local;
     private String direccionRegistro;
-    private String contrasenaResgistro;
+    private String contrasenaRegistro;
     
 }

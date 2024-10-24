@@ -30,9 +30,9 @@ public class Admin {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
     
-    private String nombreResgistro;
+    private String nombreRegistro;
     
-    private String apellidoResgistro;
+    private String apellidoRegistro;
     
     @Column(unique=true)
     private Long telefonoRegistro;
@@ -46,6 +46,6 @@ public class Admin {
     
     private String direccionRegistro;
     
-    private String contrasenaResgistro;
+    private String contrasena;
     
 }

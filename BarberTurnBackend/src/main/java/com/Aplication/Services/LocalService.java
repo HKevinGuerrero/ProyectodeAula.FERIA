@@ -39,7 +39,7 @@ public class LocalService {
     public Local updateLocal(Long id, Local updateLocal) {
         return localRepository.findById(id).map(local -> {
             local.setIdlocal(updateLocal.getIdlocal());
-            local.setLocalRegistro(updateLocal.getLocalRegistro());
+            local.setLocal(updateLocal.getLocal());
             local.setTelefonoRegistro(updateLocal.getTelefonoRegistro());
             local.setDireccionRegistro(updateLocal.getDireccionRegistro());
             return localRepository.save(local); // Guardar local actualizado

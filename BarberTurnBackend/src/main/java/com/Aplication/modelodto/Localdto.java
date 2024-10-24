@@ -25,17 +25,17 @@ public class Localdto {
     }
 
     /**
-     * @return the localRegistro
+     * @return the local
      */
-    public String getLocalRegistro() {
-        return localRegistro;
+    public String getLocal() {
+        return local;
     }
 
     /**
-     * @param localRegistro the localRegistro to set
+     * @param local the local to set
      */
-    public void setLocalRegistro(String localRegistro) {
-        this.localRegistro = localRegistro;
+    public void setLocal(String local) {
+        this.local = local;
     }
 
     /**
@@ -55,20 +55,22 @@ public class Localdto {
     /**
      * @return the telefonoRegistro
      */
-    public long getTelefonoRegistro() {
+    public Long getTelefonoRegistro() {
         return telefonoRegistro;
     }
 
     /**
      * @param telefonoRegistro the telefonoRegistro to set
      */
-    public void setTelefonoRegistro(long telefonoRegistro) {
+    public void setTelefonoRegistro(Long telefonoRegistro) {
         this.telefonoRegistro = telefonoRegistro;
     }
+
+    
     
     private Long idlocal;
 
-    private String localRegistro;
+    private String local;
     private String direccionRegistro;
 
     private Long telefonoRegistro;
