@@ -4,16 +4,12 @@
  */
 package com.Aplication.repository;
 
-import com.Aplication.modelo.Admin;
-import java.util.Optional;
+import com.Aplication.modelo.Turnero;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- *
- * @author KEVIN-PC
- */
-public interface AdminRepository extends JpaRepository<Admin, Long> {
+import java.util.List;
 
-    public Optional<Admin> findByNombreResgistro(String nombreResgistro);
-    
+public interface TurneroRepository extends JpaRepository<Turnero, Long> {
+
+
 }

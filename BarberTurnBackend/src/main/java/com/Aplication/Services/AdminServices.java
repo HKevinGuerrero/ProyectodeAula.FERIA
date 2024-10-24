@@ -37,18 +37,20 @@ public class AdminServices {
     }
 
     // Método para encontrar administrador por nombre
-    public Optional<Admin> findByNombre(String nombre) {
-        return adminRepository.findByNombre(nombre);
+    public Optional<Admin> findByNombreResgistro(String nombreResgistro) {
+        return adminRepository.findByNombreResgistro(nombreResgistro);
     }
+
 
     // Método para actualizar un administrador
     public Admin updateAdmin(Long id, Admin updatedAdmin) {
         return adminRepository.findById(id).map(admin -> {
-            admin.setNombre(updatedAdmin.getNombre());
-            admin.setApellido(updatedAdmin.getApellido());
-            admin.setTelefono(updatedAdmin.getTelefono());
-            admin.setEmail(updatedAdmin.getEmail());
+            admin.setNombreResgistro(updatedAdmin.getNombreResgistro());
+            admin.setApellidoResgistro(updatedAdmin.getApellidoResgistro());
+            admin.setTelefonoRegistro(updatedAdmin.getTelefonoRegistro());
+            admin.setCorreo(updatedAdmin.getCorreo());
             admin.setRol(updatedAdmin.getRol());
+            admin.setLocal(updatedAdmin.getLocal());
             return adminRepository.save(admin); // Guardar administrador actualizado
         }).orElseThrow(() -> new RuntimeException("Administrador no encontrado"));
     }

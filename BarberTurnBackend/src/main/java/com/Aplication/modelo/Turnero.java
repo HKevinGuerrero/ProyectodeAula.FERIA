@@ -5,45 +5,38 @@
 package com.Aplication.modelo;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-/**
- *
- * @author KEVIN-PC
- */
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Table(name = "Admin")
-public class Admin {
+@Table(name = "Turnero")
+
+public class Turnero {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String barberia;
+
+    private String numeroturno;
     
-    private String nombreResgistro;
-    
-    private String apellidoResgistro;
-    
-    @Column(unique=true)
-    private Long telefonoRegistro;
-    
-     @Column(unique=true)
-    private String correo;
-    
-    private String rol;
-    
-    private String local;
-    
-    private String direccionRegistro;
-    
+    private String hora;
+
+    private LocalDate fecha;
+
+
 }

@@ -45,15 +45,15 @@ public class AdminController {
     }
 
     @GetMapping("/{nombre}")
-    public ResponseEntity<Admin> getAdminByNombre(@PathVariable String nombre) {
-        return adminServices.findByNombre(nombre)
+    public ResponseEntity<Admin> getAdminByNombre(@PathVariable String nombreResgistro) {
+        return adminServices.findByNombreResgistro(nombreResgistro)
                 .map(admin -> new ResponseEntity<>(admin, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/{nombre}")
-    public ResponseEntity<Void> deleteAdmin(@PathVariable String nombre) {
-        return adminServices.findByNombre(nombre) // Buscar el administrador por nombre
+    public ResponseEntity<Void> deleteAdmin(@PathVariable String nombreResgistro) {
+        return adminServices.findByNombreResgistro(nombreResgistro) // Buscar el administrador por nombre
                 .map(admin -> {
                     adminServices.delete(admin); // Eliminar administrador si existe
                     return new ResponseEntity<Void>(HttpStatus.NO_CONTENT); // Respuesta 204 si se elimina correctamente

@@ -11,21 +11,8 @@ package com.Aplication.modelodto;
 public class AdminDTO {
 
     /**
-     * @return the Rol
+     * @return the id
      */
-    public String getRol() {
-        return Rol;
-    }
-
-    /**
-     * @param Rol the Rol to set
-     */
-    public void setRol(String Rol) {
-        this.Rol = Rol;
-    }
-
-    
-   
     public Long getId() {
         return id;
     }
@@ -38,70 +25,110 @@ public class AdminDTO {
     }
 
     /**
-     * @return the nombre
+     * @return the nombreResgistro
      */
-    public String getNombre() {
-        return nombre;
+    public String getNombreResgistro() {
+        return nombreResgistro;
     }
 
     /**
-     * @param nombre the nombre to set
+     * @param nombreResgistro the nombreResgistro to set
      */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreResgistro(String nombreResgistro) {
+        this.nombreResgistro = nombreResgistro;
     }
 
     /**
-     * @return the apellido
+     * @return the apellidoResgistro
      */
-    public String getApellido() {
-        return apellido;
+    public String getApellidoResgistro() {
+        return apellidoResgistro;
     }
 
     /**
-     * @param apellido the apellido to set
+     * @param apellidoResgistro the apellidoResgistro to set
      */
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public void setApellidoResgistro(String apellidoResgistro) {
+        this.apellidoResgistro = apellidoResgistro;
     }
 
     /**
-     * @return the telefono
+     * @return the telefonoRegistro
      */
-    public Long getTelefono() {
-        return telefono;
+    public Long getTelefonoRegistro() {
+        return telefonoRegistro;
     }
 
     /**
-     * @param telefono the telefono to set
+     * @param telefonoRegistro the telefonoRegistro to set
      */
-    public void setTelefono(Long telefono) {
-        this.telefono = telefono;
+    public void setTelefonoRegistro(Long telefonoRegistro) {
+        this.telefonoRegistro = telefonoRegistro;
     }
 
     /**
-     * @return the email
+     * @return the correo
      */
-    public String getEmail() {
-        return email;
+    public String getCorreo() {
+        return correo;
     }
 
     /**
-     * @param email the email to set
+     * @param correo the correo to set
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
+    /**
+     * @return the rol
+     */
+    public String getRol() {
+        return rol;
+    }
 
+    /**
+     * @param rol the rol to set
+     */
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
 
-  
-    
+    /**
+     * @return the local
+     */
+    public String getLocal() {
+        return local;
+    }
+
+    /**
+     * @param local the local to set
+     */
+    public void setLocal(String local) {
+        this.local = local;
+    }
+
+    /**
+     * @return the direccionRegistro
+     */
+    public String getDireccionRegistro() {
+        return direccionRegistro;
+    }
+
+    /**
+     * @param direccionRegistro the direccionRegistro to set
+     */
+    public void setDireccionRegistro(String direccionRegistro) {
+        this.direccionRegistro = direccionRegistro;
+    }
+ 
     private Long id;
-    private String nombre;
-    private String apellido;
-    private Long telefono;
-    private String email;
-    private String Rol;
+    private String nombreResgistro;
+    private String apellidoResgistro;
+    private Long telefonoRegistro;
+    private String correo;
+    private String rol;
+    private String local;
+    private String direccionRegistro;
     
 }
