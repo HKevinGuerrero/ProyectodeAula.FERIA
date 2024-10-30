@@ -22,6 +22,15 @@ public class TurneroService {
 
     // Crear o actualizar un turno de servicio
     public Turnero saveOrUpdate(Turnero turnero) {
+        // Verificar si existe un turno en la misma fecha, hora y barbería
+        Optional<Turnero> turnoExistente = turnerorepository.findByBarberiaAndFechaAndHora(
+            turnero.getBarberia(), turnero.getFecha(), turnero.getHora()
+        );
+
+        if (turnoExistente.isPresent()) {
+            throw new RuntimeException("Turno ya reservado para esta fecha y hora en esta barbería");
+        }
+        
         return turnerorepository.save(turnero);
     }
 

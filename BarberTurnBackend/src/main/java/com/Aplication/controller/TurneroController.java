@@ -20,9 +20,13 @@ public class TurneroController {
 
     // Crear un nuevo Turnero
     @PostMapping("/post")
-    public ResponseEntity<Turnero> createTurnoServicio(@RequestBody Turnero turnoServicio) {
-        Turnero nuevoTurnoservicio = turnoservicioService.saveOrUpdate(turnoServicio);
-        return new ResponseEntity<>(nuevoTurnoservicio, HttpStatus.CREATED);
+    public ResponseEntity<?> createTurnoServicio(@RequestBody Turnero turnoServicio) {
+        try {
+            Turnero nuevoTurnoservicio = turnoservicioService.saveOrUpdate(turnoServicio);
+            return new ResponseEntity<>(nuevoTurnoservicio, HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>("Turno ya reservado para esta fecha y hora en esta barbería", HttpStatus.CONFLICT);
+        }
     }
 
     // Obtener todos los turneros de servicio
