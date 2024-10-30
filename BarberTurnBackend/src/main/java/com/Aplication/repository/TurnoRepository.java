@@ -5,9 +5,13 @@
 package com.Aplication.repository;
 
 import com.Aplication.modelo.Turno;
+import java.time.LocalDate;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 
 public interface TurnoRepository extends JpaRepository<Turno, Long> {
+    
+    Optional<Turno> findByLocalAndFechaAndHora(String local, LocalDate fecha, String hora);
 
 }

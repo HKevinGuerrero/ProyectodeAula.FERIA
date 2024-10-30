@@ -20,9 +20,13 @@ public class TurnoController {
 
     // Crear un nuevo Turno
     @PostMapping("/post")
-    public ResponseEntity<Turno> createTurno(@RequestBody Turno turno) {
-        Turno nuevoTurno = turnoService.saveOrUpdate(turno);
-        return new ResponseEntity<>(nuevoTurno, HttpStatus.CREATED);
+    public ResponseEntity<?> createTurno(@RequestBody Turno turno) {
+        try {
+            Turno nuevoTurno = turnoService.saveOrUpdate(turno);
+            return new ResponseEntity<>(nuevoTurno, HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>("Este turno ya está reservado para esta fecha y hora en este local", HttpStatus.CONFLICT);
+        }
     }
 
     // Obtener todos los turnos
