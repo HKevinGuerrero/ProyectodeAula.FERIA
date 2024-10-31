@@ -1,127 +1,170 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import axiosInstance from '../../axiosConfig';
+import { useNavigate } from 'react-router-dom';
+import { api } from '../../axiosConfig';
 
 interface Barber {
   id: string;
-  name: string;
-  speciality: string;
+  nombre: string;
+  especialidad: string;
+  local: string;
 }
 
-interface Appointment {
+interface Turno {
   id: string;
-  clientName: string;
-  date: string;
-  status: 'completed' | 'pending' | 'canceled';
+  cliente: string;
+  fecha: string;
+  hora: string;
+  estado: 'pendiente' | 'completado' | 'cancelado';
+  emailBarbero: string;
+  local: string;
 }
 
-interface AdminData {
+interface UserData {
   id: string;
-  name: string;
-  barbershop: string;
+  correo: string;
+  nombre: string;
+  apellido: string;
+  local: string;
 }
 
-const AdminBarberDashboard: React.FC = () => {
+const AdminBarber: React.FC = () => {
   const [barbers, setBarbers] = useState<Barber[]>([]);
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
-  const [adminData, setAdminData] = useState<AdminData | null>(null);
+  const [turnos, setTurnos] = useState<Turno[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [showCompleted, setShowCompleted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Retrieve admin data from localStorage
-    const storedAdminData = localStorage.getItem('adminData');
-    if (storedAdminData) {
-      setAdminData(JSON.parse(storedAdminData));
+    const storedUserData = localStorage.getItem('user');
+    if (!storedUserData) {
+      setError('No se encontró información de usuario. Por favor, inicia sesión nuevamente.');
+      setLoading(false);
+      return;
     }
 
-    // Fetch barbers and appointments data
-    const fetchData = async () => {
-      try {
-        const barbersResponse = await axiosInstance.get(`/barbers?barbershop=${adminData?.barbershop}`);
-        setBarbers(barbersResponse.data);
-
-        const appointmentsResponse = await axiosInstance.get(`/appointments?barbershop=${adminData?.barbershop}`);
-        setAppointments(appointmentsResponse.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    if (adminData) {
-      fetchData();
+    try {
+      const parsedUserData: UserData = JSON.parse(storedUserData);
+      setUserData(parsedUserData);
+      fetchData(parsedUserData);
+    } catch (error) {
+      console.error('Error al parsear los datos del usuario:', error);
+      setError('Error al cargar los datos del usuario. Por favor, inicia sesión nuevamente.');
+      setLoading(false);
     }
-  }, [adminData]);
+  }, []);
 
-  const filteredAppointments = (status: 'completed' | 'pending' | 'canceled') => {
-    return appointments.filter(appointment => appointment.status === status);
+  const fetchData = async (userData: UserData) => {
+    try {
+      const [barbersResponse, turnosResponse] = await Promise.all([
+        api.get('/barberos'),
+        api.get('/turno')
+      ]);
+
+      const filteredBarbers = barbersResponse.data.filter(
+        (barber: Barber) => barber.local.toLowerCase() === userData.local.toLowerCase()
+      );
+      setBarbers(filteredBarbers);
+
+      const filteredTurnos = turnosResponse.data.filter(
+        (turno: Turno) => turno.local.toLowerCase() === userData.local.toLowerCase()
+      );
+      setTurnos(filteredTurnos);
+
+      setLoading(false);
+    } catch (err) {
+      console.error('Error al obtener datos:', err);
+      setError('Error al cargar los datos. Por favor, intenta de nuevo.');
+      setLoading(false);
+    }
   };
 
-  if (!adminData) {
-    return <div>Loading...</div>;
-  }
+  const handleTicketTurnosClick = () => {
+    navigate('/ticket-turnos');
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/iniciar-sesion-barberia'); // Ajusta la ruta según tu estructura de rutas
+  };
+
+  const toggleCompletedTurnos = () => {
+    setShowCompleted(!showCompleted);
+  };
+
+  if (loading) return <div style={styles.loading}>Cargando...</div>;
+  if (error) return <div style={styles.error}>{error}</div>;
+  if (!userData) return <div style={styles.error}>No se pudo cargar la información del usuario.</div>;
+
+  const pendingTurnos = turnos.filter(turno => turno.estado === 'pendiente');
+  const completedTurnos = turnos.filter(turno => turno.estado === 'completado');
 
   return (
-    <div style={styles.wrapper}>
-      <div style={styles.container}>
-        <h1 style={styles.title}>Admin Dashboard - {adminData.barbershop}</h1>
-        
+    <div style={styles.container}>
+      <button onClick={handleLogout} style={styles.logoutButton}>
+        Cerrar Sesión
+      </button>
+      
+      <div style={styles.panel}>
+        <h1 style={styles.title}>Panel de Administración - {userData.local}</h1>
+
         <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Registered Barbers</h2>
+          <h2 style={styles.sectionTitle}>Barberos</h2>
           <ul style={styles.list}>
             {barbers.map(barber => (
               <li key={barber.id} style={styles.listItem}>
-                {barber.name} - {barber.speciality}
+                {barber.nombre} - {barber.especialidad}
               </li>
             ))}
           </ul>
         </section>
 
         <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Appointments</h2>
-          <div style={styles.appointmentsContainer}>
-            <div style={styles.appointmentColumn}>
-              <h3 style={styles.columnTitle}>Completed</h3>
+          <h2 style={styles.sectionTitle}>Turnos</h2>
+          <div style={styles.columns}>
+            <div style={styles.column}>
+              <h3 style={styles.columnTitle}>Pendientes</h3>
               <ul style={styles.list}>
-                {filteredAppointments('completed').map(appointment => (
-                  <li key={appointment.id} style={styles.listItem}>
-                    {appointment.clientName} - {appointment.date}
+                {pendingTurnos.map(turno => (
+                  <li key={turno.id} style={styles.listItem}>
+                    <div>Hora: {turno.hora}</div>
+                    <div>Cliente: {turno.cliente}</div>
+                    <div>Barbero: {turno.emailBarbero}</div>
                   </li>
                 ))}
               </ul>
             </div>
-            <div style={styles.appointmentColumn}>
-              <h3 style={styles.columnTitle}>Pending</h3>
-              <ul style={styles.list}>
-                {filteredAppointments('pending').map(appointment => (
-                  <li key={appointment.id} style={styles.listItem}>
-                    {appointment.clientName} - {appointment.date}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div style={styles.appointmentColumn}>
-              <h3 style={styles.columnTitle}>Canceled</h3>
-              <ul style={styles.list}>
-                {filteredAppointments('canceled').map(appointment => (
-                  <li key={appointment.id} style={styles.listItem}>
-                    {appointment.clientName} - {appointment.date}
-                  </li>
-                ))}
-              </ul>
+            <div style={styles.column}>
+              <h3 style={styles.columnTitle} onClick={toggleCompletedTurnos}>
+                Completados {showCompleted ? '▲' : '▼'}
+              </h3>
+              {showCompleted && (
+                <ul style={styles.list}>
+                  {completedTurnos.map(turno => (
+                    <li key={turno.id} style={styles.listItem}>
+                      <div>Fecha: {turno.fecha}</div>
+                      <div>Hora: {turno.hora}</div>
+                      <div>Cliente: {turno.cliente}</div>
+                      <div>Barbero: {turno.emailBarbero}</div>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </div>
         </section>
 
-        <section style={styles.section}>
-          <h2 style={styles.sectionTitle}>Ticket-Turns</h2>
-          <Link to="/ticket-turns" style={styles.link}>Go to Ticket-Turns</Link>
-        </section>
+        <button onClick={handleTicketTurnosClick} style={styles.button}>
+          Ir a Ticket-Turnos
+        </button>
       </div>
     </div>
   );
 };
 
 const styles = {
-  wrapper: {
+  container: {
     backgroundImage: 'url("/assets/imgs/background-gallery.jpg")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -131,13 +174,26 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     padding: '20px',
+    position: 'relative' as const,
   },
-  container: {
+  logoutButton: {
+    position: 'absolute' as const,
+    top: '20px',
+    right: '20px',
+    backgroundColor: '#FF4C4C',
+    color: 'white',
+    border: 'none',
+    padding: '10px 20px',
+    fontSize: '14px',
+    cursor: 'pointer',
+    borderRadius: '4px',
+  },
+  panel: {
     backgroundColor: 'rgba(255, 255, 255, 0.9)',
     borderRadius: '8px',
     padding: '20px',
+    maxWidth: '800px',
     width: '100%',
-    maxWidth: '1200px',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
   },
   title: {
@@ -164,11 +220,11 @@ const styles = {
     padding: '8px 0',
     borderBottom: '1px solid #eee',
   },
-  appointmentsContainer: {
+  columns: {
     display: 'flex',
     justifyContent: 'space-between',
   },
-  appointmentColumn: {
+  column: {
     flex: 1,
     margin: '0 10px',
   },
@@ -177,17 +233,34 @@ const styles = {
     fontWeight: 'bold' as const,
     marginBottom: '10px',
     color: '#555',
+    cursor: 'pointer',
   },
-  link: {
-    display: 'inline-block',
-    padding: '10px 20px',
+  loading: {
+    textAlign: 'center' as const,
+    padding: '20px',
+    color: '#333',
+  },
+  error: {
+    color: 'red',
+    textAlign: 'center' as const,
+    padding: '20px',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    borderRadius: '8px',
+    margin: '20px',
+  },
+  button: {
     backgroundColor: '#4CAF50',
+    border: 'none',
     color: 'white',
+    padding: '15px 32px',
+    textAlign: 'center' as const,
     textDecoration: 'none',
+    display: 'inline-block',
+    fontSize: '16px',
+    margin: '4px 2px',
+    cursor: 'pointer',
     borderRadius: '4px',
-    fontWeight: 'bold' as const,
-    transition: 'background-color 0.3s',
   },
 };
 
-export default AdminBarberDashboard;
+export default AdminBarber;
