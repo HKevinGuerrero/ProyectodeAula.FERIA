@@ -25,7 +25,7 @@ public class TurnoController {
             Turno nuevoTurno = turnoService.saveOrUpdate(turno);
             return new ResponseEntity<>(nuevoTurno, HttpStatus.CREATED);
         } catch (RuntimeException e) {
-            return new ResponseEntity<>("Este turno ya está reservado para esta fecha y hora en este local", HttpStatus.CONFLICT);
+            return new ResponseEntity<>("Este turno ya está reservado para esta fecha y hora con este barbero", HttpStatus.CONFLICT);
         }
     }
 

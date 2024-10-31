@@ -12,6 +12,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TurnoRepository extends JpaRepository<Turno, Long> {
     
-    Optional<Turno> findByLocalAndFechaAndHora(String local, LocalDate fecha, String hora);
-
+     Optional<Turno> findByBarberoAndFechaAndHora(String barbero, LocalDate fecha, String hora);
 }
