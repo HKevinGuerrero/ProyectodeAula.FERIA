@@ -34,9 +34,13 @@ public class UserBarberoController {
     //@Autowired
     //private PasswordEncoder passwordEncoder;
     @PostMapping("/post")
-    public ResponseEntity<UserBarbero> create(@RequestBody UserBarbero user) {
-        UserBarbero nuevoUser = userService.create(user);
-        return new ResponseEntity<>(nuevoUser, HttpStatus.CREATED);
+    public ResponseEntity<?> create(@RequestBody UserBarbero user) {
+        try {
+            UserBarbero nuevoUser = userService.create(user);
+            return new ResponseEntity<>(nuevoUser, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping

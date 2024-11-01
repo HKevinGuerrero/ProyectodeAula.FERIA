@@ -15,8 +15,16 @@ public class UserClienteService {
     @Autowired
     private UserClienteRepository userRepository;
     
+    @Autowired
+    private UserBarberoService userBarberoService;
+    
     // Método para guardar un cliente
     public UserCliente create(UserCliente user) {
+        // Verificamos que el usuario no exista en ninguna de las dos tablas
+        if (userRepository.findByUsername(user.getUsername()).isPresent() ||
+            userBarberoService.findBynombre(user.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("El usuario ya existe en otra tabla");
+        }
         // Guardamos el cliente en la base de datos y lo devolvemos
         return userRepository.save(user);
     }

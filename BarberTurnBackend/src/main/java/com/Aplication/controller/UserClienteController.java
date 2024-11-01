@@ -32,9 +32,13 @@ public class UserClienteController {
     //@Autowired
     //private PasswordEncoder passwordEncoder;
     @PostMapping("/post")
-    public ResponseEntity<UserCliente> create(@RequestBody UserCliente user) {
-        UserCliente nuevoUser = userService.create(user);
-        return new ResponseEntity<>(nuevoUser, HttpStatus.CREATED);
+    public ResponseEntity<?> create(@RequestBody UserCliente user) {
+        try {
+            UserCliente nuevoUser = userService.create(user);
+            return new ResponseEntity<>(nuevoUser, HttpStatus.CREATED);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+        }
     }
 
     @GetMapping

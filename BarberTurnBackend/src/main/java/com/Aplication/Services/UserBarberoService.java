@@ -5,9 +5,7 @@
 package com.Aplication.Services;
 
 import com.Aplication.modelo.UserBarbero;
-import com.Aplication.modelo.UserCliente;
 import com.Aplication.repository.UserBarberoRepository;
-import com.Aplication.repository.UserClienteRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +21,17 @@ public class UserBarberoService {
     @Autowired
     private UserBarberoRepository userBarberoRepository;
     
-    // Método para guardar un cliente
+    @Autowired
+    private UserClienteService userClienteService;
+    
+    // Método para guardar un barbero
     public UserBarbero create(UserBarbero user) {
-        // Guardamos el cliente en la base de datos y lo devolvemos
+        // Verificamos que el usuario no exista en ninguna de las dos tablas
+        if (userBarberoRepository.findByUsername(user.getUsername()).isPresent() ||
+            userClienteService.findBynombre(user.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("El usuario ya existe en otra tabla");
+        }
+        // Guardamos el barbero en la base de datos y lo devolvemos
         return userBarberoRepository.save(user);
     }
 
